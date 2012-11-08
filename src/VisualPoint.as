@@ -11,10 +11,6 @@ package
 	public class VisualPoint extends Sprite 
 	{
 		
-		//================== VARIABLES ========================
-		
-		
-		
 		//================== CONSTRUCTOR ======================
 		
 		public function VisualPoint(x:Number, y:Number, alpha:Number=1) 
@@ -50,13 +46,6 @@ package
 			
 		}
 		
-		//================== LISTENERS ========================
-		
-		
-		
-		//================== GETTERS AND SETTERS===============
-		
-		
 	}
-
+	
 }

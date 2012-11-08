@@ -12,11 +12,6 @@ package
 	 */
 	public class NumericStepperFix extends NumericStepper 
 	{
-		
-		//================== VARIABLES ========================
-		
-		
-		
 		//================== CONSTRUCTOR ======================
 		
 		public function NumericStepperFix(parent:DisplayObjectContainer=null, xpos:Number=0, ypos:Number=0, defaultHandler:Function=null) 
@@ -30,11 +25,7 @@ package
 			e.stopImmediatePropagation();
 		}
 		
-		//================== PUBLIC METHODS ===================
-		
-		
-		
-		//================== PRIVATE METHODS ==================
+		//================== PROTECTED METHODS ================
 		
 		override protected function onMinus(event:MouseEvent):void 
 		{
@@ -47,13 +38,6 @@ package
 			event.stopImmediatePropagation();
 			super.onPlus(event);
 		}
-		
-		//================== LISTENERS ========================
-		
-		
-		
-		//================== GETTERS AND SETTERS===============
-		
 		
 	}
 

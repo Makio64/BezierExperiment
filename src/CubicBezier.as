@@ -3,6 +3,8 @@ package
 	import flash.geom.Point;
 	/**
 	 * CubicBezier - Bezier
+	 * Simple class for cubic bezier ( curve define by 4 points )
+	 * 
 	 * @version 1.0
 	 * @author David Ronai
 	 */
@@ -41,23 +43,16 @@ package
 		
         public function getBezierPoint(t:Number):Point
         {
+			// Look at wikipedia :
+			// http://en.wikipedia.org/wiki/B%C3%A9zier_curve#Cubic_B.C3.A9zier_curves
             return new Point(Math.pow(1 - t, 3)  * p0.x + 3 * t * Math.pow(1 - t, 2) * p1.x
                        + 3 * t * t * (1 - t) * p2.x + t * t * t * p3.x,
                          Math.pow(1 - t, 3)  * p0.y + 3 * t * Math.pow(1 - t, 2) * p1.y
                        + 3 * t * t * (1 - t) * p2.y + t * t * t * p3.y);
         }
 		
-		//================== PRIVATE METHODS ==================
-		
-		
-		
-		//================== LISTENERS ========================
-		
-		
-		
 		//================== GETTERS AND SETTERS===============
 		
-				
 		public function get p0():Point 
 		{
 			return _p0;

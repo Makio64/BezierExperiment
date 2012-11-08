@@ -3,15 +3,11 @@ package
 	import com.bit101.components.CheckBox;
 	import com.bit101.components.Label;
 	import com.bit101.components.NumericStepper;
-	import com.bit101.components.PushButton;
-	import flash.display.Bitmap;
-	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import flash.geom.Matrix;
 	import flash.geom.Point;
 	
 	/**
@@ -58,6 +54,8 @@ package
 			points = new Vector.<Point>();
 			pointsUser = new Vector.<VisualPoint>();
 			
+			// UI
+			
 			drawLine = new CheckBox(this, 10, 10, "drawLine", onUIChange);
 			drawLine.selected = true;
 			drawCurve = new CheckBox(this, 10, 30, "drawCurve", onUIChange);
@@ -75,7 +73,7 @@ package
 			particlesNumber.value = 40;
 			particlesSpace = new NumericStepperFix(this, 60, 130, onChange);
 			speed = new NumericStepperFix(this, 60, 150, onChange);
-			speed.value = 40;
+			speed.value = 25;
 			radiusBtn = new NumericStepperFix(this, 60, 170, onChange);
 			radiusBtn.value=30;
 			lastParticleSpawn = 0;
@@ -102,7 +100,7 @@ package
 		}
 		
 		/**
-		 * Transform quadratic line to cubic line :)
+		 * Transform quadratic line to cubic line
 		 */
 		private function generatePoint():void 
 		{
@@ -146,6 +144,19 @@ package
 					for (var j:int = 0; j < division; j++) {
 						var p:Point = b.getBezierPoint(j*(1 / division));
 						graphics.lineTo(p.x, p.y);
+						if (j == division - 1) {
+							var dx:Number = p.x - b.getBezierPoint(j*(1 / (division-1))).x;
+							var dy:Number = p.y - b.getBezierPoint(j*(1 / (division-1))).y;
+							var rotation:Number = Math.atan2(dy, dx)+Math.PI/2 /// Math.PI * 180;
+							
+							//draw the tangent of the curve
+							
+							graphics.lineStyle(1, 0xFF0000,.8);
+							graphics.moveTo(p.x+Math.cos(rotation)*25, p.y+Math.sin(rotation)*25);
+							graphics.lineTo(p.x-Math.cos(rotation)*25, p.y-Math.sin(rotation)*25);
+							graphics.moveTo(p.x, p.y);
+							graphics.lineStyle(1, 0x0000FF,.3);
+						}
 					}
 				}
 				graphics.endFill();

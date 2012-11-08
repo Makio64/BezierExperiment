@@ -3,6 +3,8 @@ package
 	import flash.geom.Point;
 	/**
 	 * QuadraticBezier - Bezier
+	 * Simple class for quadratic bezier ( curve define by 3 points )
+	 * 
 	 * @version 1.0
 	 * @author David Ronai
 	 */
@@ -37,7 +39,9 @@ package
 		//================== PUBLIC METHODS ===================
 		
 		public function getBezierPoint(t:Number):Point
-        {			
+        {
+			// Learn more about this on wikipedia
+			// 
             return new Point(Math.pow(1 - t, 2)  * p0.x + 2 * t * (1 - t) * p1.x +Math.pow(t, 2)  * p2.x,
 							Math.pow(1 - t, 2)  * p0.y + 2 * t * (1 - t) * p1.y +Math.pow(t, 2)  * p2.y
 			)
@@ -56,14 +60,6 @@ package
             
             return points;
         }
-		
-		//================== PRIVATE METHODS ==================
-		
-		
-		
-		//================== LISTENERS ========================
-		
-		
 		
 		//================== GETTERS AND SETTERS===============
 		

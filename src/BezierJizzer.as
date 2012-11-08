@@ -3,15 +3,16 @@ package
 	import flash.geom.Point;
 	/**
 	 * BezierJizzer - Bezier
+	 * Create a variation of the bezier curve 
 	 * @version 1.0
 	 * @author David Ronai
 	 */
 	public class BezierJizzer extends Bezier 
 	{
-		private var radius:uint;
 		
 		//================== VARIABLES ========================
 		
+		private var radius:uint;
 		
 		
 		//================== CONSTRUCTOR ======================
@@ -25,21 +26,12 @@ package
 			super(p0, p1, p2);
 		}
 		
-		
-		//================== PUBLIC METHODS ===================
-		
-		
-		
 		//================== PRIVATE METHODS ==================
 		
 		private function getRandomPoint():Point 
 		{
 			return new Point( -radius + radius * 2 * Math.random(), -radius + radius * 2 * Math.random());
 		}
-		
-		//================== LISTENERS ========================
-		
-		
 		
 		//================== GETTERS AND SETTERS===============
 		
